@@ -1,0 +1,13 @@
+name: Test Service Container Override
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis
+        # New feature: entrypoint and command overrides
+        options: --entrypoint /bin/sh
+    steps:
+      - run: echo "test"
